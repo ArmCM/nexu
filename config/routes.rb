@@ -7,4 +7,20 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  namespace :api do
+    namespace :v1 do
+
+      # Brand
+      get  '/brands',     to: 'brands#index'
+      post '/brands',     to: 'brands#create'
+
+      # Model
+      get    '/models',      to: 'models#index'
+      patch  '/models/:id',  to: 'models#update'
+
+      # Brand models
+      get  '/brands/:id', to: 'brandmodels#index'
+      post '/brands/:id/models', to: 'brandmodels#create'
+    end
+  end
 end
