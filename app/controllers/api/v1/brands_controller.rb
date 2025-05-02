@@ -7,4 +7,12 @@ class Api::V1::BrandsController < ApplicationController
             average_price: brand.average_price
          }}
     end
+
+    def create
+        brand = Brand.new(name: params[:name])
+    
+          return render json: brand, status: :created if brand.save
+
+          render json: { error: brand.errors.full_messages }, status: :unprocessable_entity
+    end
 end

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
       # Brand
       get  '/brands',     to: 'brands#index'
+      post '/brands',     to: 'brands#create'
+
     end
   end
 end
