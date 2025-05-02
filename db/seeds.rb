@@ -7,3 +7,20 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require 'json'
+
+file = File.read(Rails.root.join('db/data/models.json'))
+vehicles = JSON.parse(file)
+
+vehicles.each do |vehicle|
+  brand = Brand.find_or_initialize_by(name: vehicle['brand_name'])
+  brand.average_price = vehicle['average_price']
+  brand.save!
+
+  Model.find_or_create_by!(
+    name: vehicle['name'],
+    brand: brand
+  ) do |model|
+    model.average_price = vehicle['average_price']
+  end
+end
