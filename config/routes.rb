@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       patch  '/models/:id',  to: 'models#update'
 
       # Brand models
-      get  '/brands/:id', to: 'brandmodels#index'
+      get '/brands/:id/models/', to: 'brandmodels#index'
       post '/brands/:id/models', to: 'brandmodels#create'
     end
   end
