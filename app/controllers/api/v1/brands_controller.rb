@@ -3,7 +3,7 @@ class Api::V1::BrandsController < ApplicationController
         brands = Brand.all.includes(:models)
         render json: brands.map { |brand| { 
             id: brand.id,
-            nombre: brand.name,
+            name: brand.name,
             average_price: brand.average_price
          }}
     end
