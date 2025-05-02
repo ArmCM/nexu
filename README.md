@@ -62,12 +62,17 @@ Asegúrate de tener instalado lo siguiente:
 
 la prueba esta incompleta, pero mi proceso sería el siguiente. 
 
-- para cada endpoint aplicar las validaciones correspondientes en el modelo validando los tipos de datos esperados
-- crear controladores que solo reciban información y retornes respuestas, separar las responsabilidades en otra clase (en caso de aplicar)
-- implementar filtros mediante query string en las url de listado, aplicando tests para validar que la busqueda se comporte como se espera
-- crear test feature de cada endpoint **inicio _(entrada)_** `->` `proceso` `->`  **salida**  personalmente aplico en mis proyectos el enfoque de **Sandi Metz** -> [como escribir mejores tests](https://www.youtube.com/watch?v=URSWYvyc42M&t=1820s&ab_channel=Confreaks)
+- crear tests  para cada endpoint y poder aplicar las validaciones correspondientes en el modelo validando los tipos de datos esperados
+- crear controladores que solo reciban información y retornes respuestas, separar cualquier otra lógica en otra clase _(en caso de aplicar)_ para separar responsabilidades
+- crear tests para validar que la busqueda mediante query string en las url de listado se comporte como se espera al implementar los filtros
+- los tests de cada endpoint seguirían el flujo **inicio _(entrada)_** `->` `proceso` `->`  **salida**  personalmente aplico este enfoque mis proyectos basado en la charla de **Sandi Metz** -> [como escribir mejores tests](https://www.youtube.com/watch?v=URSWYvyc42M&t=1820s&ab_channel=Confreaks)
+- implementar autenticación por tokens en caso de ser necesario
 
 ## Endpoints
+
+[127.0.0.1:3000/api/v1/brands](http://127.0.0.1:3000/api/v1/brands)
+
+[127.0.0.1:3000/api/v1/models](http://127.0.0.1:3000/api/v1/models)
 
 | Método | Ruta                | Descripción                                    | Estatus |
 |--------|---------------------|------------------------------------------------|---------|
