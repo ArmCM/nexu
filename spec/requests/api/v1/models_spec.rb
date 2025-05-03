@@ -21,4 +21,20 @@ RSpec.describe "Models API", type: :request do
 
     end
   end
+
+  describe "PATCH /api/v1/models" do
+    it "update a model" do
+
+      brand = Brand.create!(name: "Chevrolet")
+      model = Model.create!(name: "Onix", average_price: "20000", brand: brand)
+
+      patch "/api/v1/models/#{model.id}", params: { name: "fake name", average_price: "40000" }
+
+      expect(response).to have_http_status(:ok)
+
+      json = JSON.parse(response.body)
+      expect(json["name"]).to eq("fake name")
+      expect(json["average_price"]).to eq("40000")
+    end
+  end
 end
