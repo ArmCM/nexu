@@ -1,6 +1,6 @@
 class Api::V1::BrandsController < ApplicationController
     def index
-        brands = Brand.all.includes(:models)
+        brands = Brand.all
         render json: brands.map { |brand| { 
             id: brand.id,
             name: brand.name,
