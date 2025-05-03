@@ -4,7 +4,7 @@ RSpec.describe "Brands API", type: :request do
   describe "GET /api/v1/brands" do
     it "returns a list of brands with average_price" do
       brand = Brand.create!(name: "Toyota")
-      brand.models.create!(average_price: 20000)
+      brand.models.create!(name: "fake", average_price: 20000)
 
       get "/api/v1/brands"
 

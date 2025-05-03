@@ -36,5 +36,20 @@ RSpec.describe "Models API", type: :request do
       expect(json["name"]).to eq("fake name")
       expect(json["average_price"]).to eq("40000")
     end
+
+    it "show errors when try update a model with invalid values" do
+
+      brand = Brand.create!(name: "Chevrolet")
+      model = Model.create!(name: "Onix", average_price: "20000", brand: brand)
+
+      patch "/api/v1/models/#{model.id}", params: { name: "", average_price: "" }
+
+      expect(response).to have_http_status(:unprocessable_entity)
+
+      json = JSON.parse(response.body)
+      expect(json["error"]).to include("Name can't be blank")
+      expect(json["error"]).to include("Average price can't be blank")
+
+    end
   end
 end
